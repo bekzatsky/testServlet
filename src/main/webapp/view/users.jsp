@@ -18,8 +18,11 @@
             color: white; /* Цвет текста */
             border-spacing: 1px; /* Расстояние между ячейками */
         }
-        td, th {
-            background: deepskyblue; /* Цвет фона ячеек */
+        th {
+
+        }
+        td {
+            background: green; /* Цвет фона ячеек */
             padding: 5px; /* Поля вокруг текста */
         }
         p {
