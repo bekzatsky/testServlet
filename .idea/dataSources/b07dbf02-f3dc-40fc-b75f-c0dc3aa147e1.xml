@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - test@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="test">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="aerocompany"/>
+    <schema id="3" name="clients"/>
+    <schema id="4" name="computers"/>
+    <schema id="5" name="information_schema"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="passengers"/>
+    <schema id="8" name="people"/>
+    <schema id="9" name="performance_schema"/>
+    <schema id="10" name="phonebook"/>
+    <schema id="11" name="shop_db"/>
+    <schema id="12" name="sys"/>
+    <table id="13" parent="1" name="books"/>
+    <table id="14" parent="1" name="users"/>
+    <column id="15" parent="13" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="16" parent="13" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="17" parent="13" name="author">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <index id="18" parent="13" name="id_UNIQUE">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="19" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="20" parent="13" name="id_UNIQUE">
+      <columns>id</columns>
+      <underlying-index>id_UNIQUE</underlying-index>
+    </key>
+    <column id="21" parent="14" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="22" parent="14" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(40)|0</data-type>
+    </column>
+    <column id="23" parent="14" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(40)|0</data-type>
+    </column>
+    <key id="24" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
