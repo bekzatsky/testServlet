@@ -14,12 +14,14 @@
 <body>
 <table cellspacing="1" cellpadding="10" border="1" width="100%">
     <tr>
+        <th>id</th>
         <th>username</th>
         <th>password</th>
     </tr>
 
     <c:forEach items="${users}" var="user">
         <tr>
+            <td> ${user.id}</td>
             <td> ${user.username}</td>
             <td> ${user.password}</td>
         </tr>

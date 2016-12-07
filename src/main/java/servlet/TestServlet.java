@@ -39,7 +39,7 @@ public class TestServlet extends HttpServlet {
             List<User> users = new ArrayList<User>();
 
             while (resultSet.next()){
-                User user = new User(resultSet.getString("username"), resultSet.getString("password"));
+                User user = new User(resultSet.getInt("id"), resultSet.getString("username"), resultSet.getString("password"));
                 users.add(user);
             }
 
