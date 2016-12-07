@@ -1,7 +1,7 @@
 package servlet;
 
 import Database.DBWorker;
-import model.User;
+import model.Status;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,21 +29,29 @@ public class TestServlet extends HttpServlet {
         }
 
         DBWorker dbWorker = new DBWorker();
-        String query = "select * from users";
+        String query = "select * from tazakala_events";
         Statement statement = null;
         try {
 
             statement = dbWorker.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
-            List<User> users = new ArrayList<User>();
+            List<Status> statuses = new ArrayList<Status>();
 
             while (resultSet.next()){
-                User user = new User(resultSet.getInt("id"), resultSet.getString("username"), resultSet.getString("password"));
-                users.add(user);
+                Status status = new Status(resultSet.getLong("id"),
+                        resultSet.getString("licensePlate"),
+                        resultSet.getInt("camera"),
+                        resultSet.getInt("libraWeight"),
+                        resultSet.getString("status"),
+                        resultSet.getLong("timestamp"),
+                        resultSet.getLong("libraIn"),
+                        resultSet.getLong("libraOut"));
+
+                statuses.add(status);
             }
 
-            req.setAttribute("users", users);
+            req.setAttribute("statuses", statuses);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/view/users.jsp");
             dispatcher.forward(req, resp);

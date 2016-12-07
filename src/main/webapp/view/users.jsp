@@ -10,20 +10,47 @@
 <html>
 <head>
     <title>Database</title>
+    <style>
+
+        table {
+            width: 100%; /* Ширина таблицы */
+            background: white; /* Цвет фона таблицы */
+            color: white; /* Цвет текста */
+            border-spacing: 1px; /* Расстояние между ячейками */
+        }
+        td, th {
+            background: deepskyblue; /* Цвет фона ячеек */
+            padding: 5px; /* Поля вокруг текста */
+        }
+        p {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<p><button>Кнопка с текстом</button>
 <table cellspacing="1" cellpadding="10" border="1" width="100%">
     <tr>
         <th>id</th>
-        <th>username</th>
-        <th>password</th>
+        <th>licensePlate</th>
+        <th>camera</th>
+        <th>libraWeight</th>
+        <th>status</th>
+        <th>timestamp</th>
+        <th>libraIn</th>
+        <th>libraOut</th>
     </tr>
 
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${statuses}" var="a">
         <tr>
-            <td> ${user.id}</td>
-            <td> ${user.username}</td>
-            <td> ${user.password}</td>
+            <td> ${a.id}</td>
+            <td> ${a.licensePlate}</td>
+            <td> ${a.camera}</td>
+            <td> ${a.libraWeight}</td>
+            <td> ${a.status}</td>
+            <td> ${a.timestamp}</td>
+            <td> ${a.libraIn}</td>
+            <td> ${a.libraOut}</td>
         </tr>
     </c:forEach>
 </table>
