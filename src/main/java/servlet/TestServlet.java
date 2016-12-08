@@ -19,8 +19,16 @@ import java.util.List;
  * Created by Bekzat on 06.12.2016.
  */
 public class TestServlet extends HttpServlet {
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/users.jsp");
+        dispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +37,8 @@ public class TestServlet extends HttpServlet {
         }
 
         DBWorker dbWorker = new DBWorker();
-        String query = "select * from tazakala_events";
+        String query = "select * from tazakala_events t\n" +
+                       "where t.libraWeight between '"+req.getParameter("weightForm")+"' and '"+req.getParameter("weightTo")+"'";
         Statement statement = null;
         try {
 

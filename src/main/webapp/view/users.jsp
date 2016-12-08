@@ -9,8 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Database</title>
+    <title>Тазакала</title>
     <style>
+
+        body {
+            background-color: white;
+        }
 
         table {
             background: #f5f5f5;
@@ -96,23 +100,81 @@
             box-shadow: inset -1px -1px 0 #fff;
         }
 
-        tbody:hover td {
-            color: transparent;
-            text-shadow: 0 0 3px #aaa;
+        button.submit {
+            background-color: #68b12f;
+            background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+            background: -webkit-linear-gradient(top, #68b12f, #50911e);
+            background: -moz-linear-gradient(top, #68b12f, #50911e);
+            background: -ms-linear-gradient(top, #68b12f, #50911e);
+            background: -o-linear-gradient(top, #68b12f, #50911e);
+            background: linear-gradient(top, #68b12f, #50911e);
+            border: 1px solid #509111;
+            border-bottom: 1px solid #5b992b;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            box-shadow: inset 0 1px 0 0 #9fd574;
+            -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+            -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+            -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+            -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+            color: white;
+            font-weight: bold;
+            padding: 6px 20px;
+            text-align: center;
+            text-shadow: 0 -1px 0 #396715;
         }
 
-        tbody:hover tr:hover td {
-            color: #444;
-            text-shadow: 0 1px 0 #fff;
+        button.submit:hover {
+              opacity:.85;
+              cursor: pointer;
         }
-        p {
-            text-align: center;
+
+        button.submit:active {
+              border: 1px solid #20911e;
+              box-shadow: 0 0 10px 5px #356b0b inset;
+              -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+              -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+              -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+              -o-box-shadow: 0 0 10px 5px #356b0b inset;
+        }
+
+
+        .filter input {
+            padding: 6px 20px;
+            border:1px solid #aaa;
+            box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+            border-radius:2px;
+        }
+        .filter input:focus {
+              background: #fff;
+              border:1px solid #555;
+              box-shadow: 0 0 3px #aaa;
         }
     </style>
 </head>
 <body>
-<p><button>Кнопка с текстом</button>
-<table cellspacing="1" cellpadding="10" border="1" width="100%">
+<div style="margin: 0 275;width: 600px">
+    <table>
+        <tr>
+            <th>
+        <form class="filter" action="/" method="POST">
+        <p>libraWeight</p>
+        С:
+        <input type="text" name="weightForm">
+        по:
+        <input type="text" name="weightTo">
+        <button class="submit" type="submit">Сформировать</button>
+        </form>
+            </th>
+        </tr>
+    </table>
+
+
+</div>
+<table>
     <tr>
         <th>id</th>
         <th>licensePlate</th>
@@ -137,5 +199,7 @@
         </tr>
     </c:forEach>
 </table>
+
+
 </body>
 </html>
