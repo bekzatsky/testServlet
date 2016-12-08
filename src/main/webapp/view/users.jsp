@@ -13,7 +13,7 @@
     <style>
 
         body {
-            background-color: #5e716c;
+            background-color: navajowhite;
         }
 
         table {
