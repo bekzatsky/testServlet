@@ -13,14 +13,14 @@
     <style>
 
         body {
-            background-color: white;
+            background-color: #5e716c;
         }
 
         table {
             background: #f5f5f5;
             border-collapse: separate;
             box-shadow: inset 0 1px 0 #fff;
-            font-size: 12px;
+            font-size: 15px;
             line-height: 24px;
             margin: 30px auto;
             text-align: left;
@@ -100,6 +100,16 @@
             box-shadow: inset -1px -1px 0 #fff;
         }
 
+        tbody:hover td {
+            color: transparent;
+            text-shadow: 0 0 3px #aaa;
+        }
+
+        tbody:hover tr:hover td {
+            color: #444;
+            text-shadow: 0 1px 0 #fff;
+        }
+
         button.submit {
             background-color: #68b12f;
             background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
@@ -156,23 +166,12 @@
     </style>
 </head>
 <body>
-<div style="margin: 0 275;width: 600px">
-    <table>
-        <tr>
-            <th>
-        <form class="filter" action="/" method="POST">
-        <p>libraWeight</p>
-        С:
+<div style="margin: auto;width: 600px">
+    <form class="filter" action="/" method="POST">
         <input type="text" name="weightForm">
-        по:
         <input type="text" name="weightTo">
         <button class="submit" type="submit">Сформировать</button>
-        </form>
-            </th>
-        </tr>
-    </table>
-
-
+    </form>
 </div>
 <table>
     <tr>
