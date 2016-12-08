@@ -168,7 +168,10 @@
 <body>
 <div style="margin: auto;width: 600px">
     <form class="filter" action="/" method="POST">
+        <p>libraWeight</p>
+        C:
         <input type="text" name="weightForm">
+        по:
         <input type="text" name="weightTo">
         <button class="submit" type="submit">Сформировать</button>
     </form>
