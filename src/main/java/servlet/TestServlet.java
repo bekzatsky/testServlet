@@ -12,13 +12,14 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Bekzat on 06.12.2016.
- */
 public class TestServlet extends HttpServlet {
+
 
 
     @Override
@@ -30,6 +31,24 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        long unixtimeFrom;
+        long unixtimeTo;
+        String timestampFrom = req.getParameter("timestampFrom");
+        String timestampTo = req.getParameter("timestampTo");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Long sdfFrom = null;
+        Long sdfTo = null;
+        try {
+            sdfFrom = df.parse(timestampFrom).getTime();
+            sdfTo = df.parse(timestampTo).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        unixtimeFrom = sdfFrom/1000;
+        unixtimeTo = sdfTo/1000;
+        System.out.println(req.getParameter("timestampFrom"));
+
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -38,8 +57,9 @@ public class TestServlet extends HttpServlet {
 
         DBWorker dbWorker = new DBWorker();
         String query = "select * from tazakala_events t\n" +
-                       "where t.libraWeight between '"+req.getParameter("weightForm")+"' and '"+req.getParameter("weightTo")+"'";
+                       "where t.timestamp between '"+unixtimeFrom+"' and '"+unixtimeTo+"'";
         Statement statement = null;
+
         try {
 
             statement = dbWorker.getConnection().createStatement();
@@ -70,6 +90,5 @@ public class TestServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 
 }

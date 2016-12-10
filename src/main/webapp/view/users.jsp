@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Bekzat
@@ -168,11 +169,11 @@
 <body>
 <div style="margin: auto;width: 600px">
     <form class="filter" action="/" method="POST">
-        <p>libraWeight</p>
+        <p>Временная метка</p>
         C:
-        <input type="text" name="weightForm">
+        <input type="date" name="timestampFrom">
         по:
-        <input type="text" name="weightTo">
+        <input type="date" name="timestampTo">
         <button class="submit" type="submit">Сформировать</button>
     </form>
 </div>
