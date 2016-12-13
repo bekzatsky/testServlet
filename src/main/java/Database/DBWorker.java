@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DBWorker {
     private static final String URL = "jdbc:mysql://localhost:3306/test";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
    // private static  final String driver = "com.mysql.jdbc.Driver";
 
     private Connection connection;

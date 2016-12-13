@@ -31,8 +31,10 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        long unixtimeFrom;
-        long unixtimeTo;
+        long unixtimeFrom = 0;
+        long unixtimeTo = 0;
+        int camera;
+        camera = Integer.parseInt(req.getParameter("camera"));
         String timestampFrom = req.getParameter("timestampFrom");
         String timestampTo = req.getParameter("timestampTo");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,10 +46,13 @@ public class TestServlet extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        unixtimeFrom = sdfFrom/1000;
-        unixtimeTo = sdfTo/1000;
-        System.out.println(req.getParameter("timestampFrom"));
-
+        System.out.println(req.getParameter("camera"));
+        try {
+            unixtimeFrom = sdfFrom / 1000;
+            unixtimeTo = sdfTo / 1000;
+        } catch (NullPointerException e) {
+            System.out.println("Выберите критерии для формирования");
+        }
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -55,9 +60,10 @@ public class TestServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+
         DBWorker dbWorker = new DBWorker();
         String query = "select * from tazakala_events t\n" +
-                       "where t.timestamp between '"+unixtimeFrom+"' and '"+unixtimeTo+"'";
+                       "where t.timestamp between '"+unixtimeFrom+"' and '"+unixtimeTo+"' and t.camera = '"+camera+"'";
         Statement statement = null;
 
         try {

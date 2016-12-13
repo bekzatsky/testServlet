@@ -174,6 +174,14 @@
         <input type="date" name="timestampFrom">
         по:
         <input type="date" name="timestampTo">
+        <p>Камера</p>
+        <select name="camera">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+
         <button class="submit" type="submit">Сформировать</button>
     </form>
 </div>
